@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>bookmark add</title>
+    </head>
+    <body>
+        <form method = post>
+            {% csrf_token %}
+            {{ form.as_p}}
+            <!-- form.as_p = p태그를 사용해 views의 field 안에 항목으로 input 만들어줌. -->
+            <input type =submit value="add bookmark">
+        </form>
+    </body>
+</html>
