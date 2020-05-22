@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Bookmark Confirm</title>
+    </head>
+    <body>
+        <form action="" method = "POST">
+            {% csrf_token %}
+            <br>
+            <div>진짜 지울래? {{bookmark}}</div>
+            <button type="submit">sure</button>
+        </form>
+    </body>
+</html>
