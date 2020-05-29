@@ -1,14 +1,11 @@
-<html>
-    <head>
-        <title>Bookmark Confirm</title>
-    </head>
-    <body>
-        <form action="" method = "POST">
+{% extends 'base.html' %}
+    {% block title %}CONFIRM{% endblock %}
+    {% block content %}
+        <form action="" method = "POST" name = f1>
             {% csrf_token %}
             <br>
             <div>진짜 지울래? {{bookmark}}</div>
-            <button type="submit">sure</button>
-            <button onclick = history.back()>cancel</button>
         </form>
-    </body>
-</html>
+        <button onclick = "javascript:f1.submit();">sure</button>
+        <button onclick = history.back()>cancel</button>
+    {% endblock %}

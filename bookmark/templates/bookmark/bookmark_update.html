@@ -1,8 +1,6 @@
-<html>
-    <head>
-        <title>bookmark update</title>
-    </head>
-    <body>
+{% extends 'base.html' %}
+    {% block title %}UPDATE{% endblock %}
+    {% block content %}
         <form method = post><!--ction은 지가 알아서 해줌 -->
             {% csrf_token %}
             {{ form.as_ul}}
@@ -10,6 +8,5 @@
             <button type=submit>modify</button>
             <button onclick = history.back()>cancel</button>
         </form>
-    </body>
-</html>
+    {% endblock %}
 <!-- as_table은 table tag, as_ul은 ul tag 필요 -->

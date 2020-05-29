@@ -1,9 +1,6 @@
-<html>
-    <head>
-        <title>Bookmark Detail</title>
-    </head>
-    <body>
+{% extends 'base.html' %}
+    {% block title %}DETAIL{% endblock %}
+    {% block content %}
         {{bookmark.site_name}}<br>
         {{bookmark.url}}
-    </body>
-</html>
+    {% endblock %}
