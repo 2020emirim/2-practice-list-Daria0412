@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
     {% block title %}ADD{% endblock %}
     {% block content %}
-        <form method = post>
+        <form method = post name = f1>
             {% csrf_token %}
             {{ form.as_p}}
             <!-- form.as_p = p태그를 사용해 views의 field 안에 항목으로 input 만들어줌. -->
-            <input type =submit value="add bookmark">
-            <button onclick = history.back()>cancel</button>
         </form>
+        <button onclick = "javascript:f1.submit();" class = "btn btn-primary btn-sm">sure</button>
+        <button onclick = history.back() class = "btn btn-info btn-sm">cancel</button>
     {% endblock %}

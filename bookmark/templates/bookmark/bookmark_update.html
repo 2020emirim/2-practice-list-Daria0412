@@ -5,8 +5,8 @@
             {% csrf_token %}
             {{ form.as_ul}}
             <!-- form.as_p = p태그를 사용해 views의 field 안에 항목으로 input 만들어줌. -->
-            <button type=submit>modify</button>
-            <button onclick = history.back()>cancel</button>
+            <button type=submit class = "btn btn-success btn-sm">modify</button>
+            <button onclick = history.back() class = "btn btn-info btn-sm">cancel</button>
         </form>
     {% endblock %}
 <!-- as_table은 table tag, as_ul은 ul tag 필요 -->
