@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-    {% block title %}LIST{% endblock %}
-    {% block content %}
-    <a href="{% url 'bookmark:add'%}"  class="btn btn-primary btn-sm">Add Bookmark</a>
+
+{% block title %}List{% endblock %}
+
+{% block content %}
+    <a href="{% url 'bookmark:add' %}" class="btn btn-primary btn-sm">Add Bookmark</a>
     <p></p>
     <table class="table">
         <thead>
@@ -17,12 +19,32 @@
         {% for bookmark in bookmark_list %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="{% url 'bookmark:detail' pk=bookmark.id%}">{{ bookmark.site_name }}</a></td>
+                <td><a href="{% url 'bookmark:detail' pk=bookmark.id %}">{{ bookmark.site_name }}</a></td>
                 <td><a href="{{ bookmark.url }}">{{ bookmark.url }}</a></td>
-                <td><a href="{% url 'bookmark:update' pk=bookmark.id%}"  class="btn btn-success btn-sm">Modify</a></td>
-                <td><a href="{% url 'bookmark:delete' pk=bookmark.id%}"  class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a href="{% url 'bookmark:update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
+                <td><a href="{% url 'bookmark:delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+{% endblock %}
+
+{% block pagination %}
+    <ul class="pagination pagination-sm justify-content-center">
+    {% if page_obj.has_previous %}
+        <li class="page-item"><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a></li>
+    {% else %}
+        <li class="page-item disabled"><a href="" class="page-link">Previous</a></li>
+    {% endif %}
+{#          127.0.0.1/bookmark/?page=숫자#}
+        {% for pag in page_obj.paginator.page_range %}
+            <li class="page-item{% if page_obj.number ==  forloop.counter  %} active{% endif %}">
+            <a href="{{ request.path }}?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a></li>
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li class="page-item"><a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="page-link">Next</a></li>
+    {% else %}
+        <li class="page-item"><a href="" class="page-link">Next</a></li>
+    {% endif %}
+    </ul>
 {% endblock %}
